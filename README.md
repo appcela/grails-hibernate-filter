@@ -1,28 +1,47 @@
 grails-hibernate-filter
 =======================
 
-This is a fork of the original [Grails Hibernate Filter Plugin](http://grails.org/plugin/hibernate-filter) to make it work with the latest Grails version 2.4.3 and Hibernate 4.
+# Description
+This is a fork of the original [Grails Hibernate Filter Plugin](http://grails.org/plugin/hibernate-filter) 
+created from fork [appcela/grails-hibernate-plugin](https://github.com/appcela/grails-hibernate-filter) 
+to make it work with the Grails 3 and Hibernate 4.
 
-# Installation
+This repo contains two projects:
+  
+1.  hibernate-filter-plugin - with plugin code
+1.  hibernate-filter-example - with example application using plugin 
 
-## 1. Build Plugin Zip File
+# Usage
 
-To install this plugin, please run the following command to build the binary plugin jar file first.
+## Build Plugin File
 
-    grails package-plugin --binary
+Clone the repository and execute in main directory command:
+
+    ./gradlew hibernate-filter-plugin:jar
     
-The following plugin jar file will be generated,
+You can publish it to your maven local repository using:
 
-- target/grails-plugin-hibernate-filter-0.3.2.appcela.jar
+    ./gradlew hibernate-filter-plugin:publishToMavenLocal
+    
+## Running example application
 
-## 2. Install This Plugin
+To run example application use command:
 
-Copy the generated plugin jar file to your Grails project's "`lib/`" folder.
+    ./gradlew hibernate-filter-plugin:run
+    
+## Use plugin in your application
 
-## ~~3. Add Plugin Dependency~~
+Add dependency in build.gradle:
 
-There's no need to add a dependency for this plugin for your Grails project. It should just work.
+    compile "org.grails.plugins:grails-hibernate-filter:<version_number>"
+    
+Configure dataSource in application.yml
+
+    configClass: org.grails.plugin.hibernate.filter.HibernateFilterDomainConfiguration
 
 # Usage
 
 Please refer to the official [Grails Hibernate Filter Plugin](http://grails.org/plugin/hibernate-filter) for usage.
+
+# Continuous integration server
+[![Build Status](https://travis-ci.org/fingo/grails-hibernate-filter.svg?branch=master)](https://travis-ci.org/fingo/grails-hibernate-filter)
